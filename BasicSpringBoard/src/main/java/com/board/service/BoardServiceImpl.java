@@ -14,11 +14,17 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Inject
 	private BoardDAO dao;
-	
+	//게시물 리스트
 	@Override
 	public List<BoardVO> list() throws Exception {
 		// TODO Auto-generated method stub
 		return dao.list();
+	}
+	//게시물 작성
+	@Override
+	public void write(BoardVO vo) throws Exception {
+		dao.write(vo);
+		
 	}
 
 }

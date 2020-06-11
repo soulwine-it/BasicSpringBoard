@@ -27,5 +27,17 @@ public class BoardController {
 		
 		model.addAttribute("list", list);
 	}
-
+	// 게시물 작성
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public void getWrite() throws Exception{
+		
+	}
+	
+	//게시물 작성
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String postWrite(BoardVO vo) throws Exception{
+		service.write(vo);
+		
+		return "redirect:/board/list";
+	}
 }
