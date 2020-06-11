@@ -11,5 +11,6 @@ public interface BoardService {
 	public void write(BoardVO vo) throws Exception;
 	//게시물 조회
 	public BoardVO view(int bno) throws Exception;
-	
+	//게시물 수정
+	public void modify(BoardVO vo) throws Exception;
 }
