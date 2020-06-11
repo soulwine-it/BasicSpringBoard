@@ -49,6 +49,12 @@ public class BoardDAOImpl implements BoardDAO {
 		sql.update(namespace + ".modify", vo);
 		
 	}
+
+	@Override
+	public void delete(int bno) throws Exception {
+		sql.delete(namespace + ".delete", bno);
+		
+	}
 	
 	
 	
