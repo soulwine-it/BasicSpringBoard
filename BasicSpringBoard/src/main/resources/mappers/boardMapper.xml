@@ -22,4 +22,17 @@
 			tbl_board(title, content, writer)
 				values(#{title}, #{content}, #{writer})
 	</insert>
+	
+	<!--  게시물 조회 
+	파라미터 타입은 매퍼에 들어오는 데이터, 리설트 타입은 매퍼가 내보내는 데이터입니다.-->
+	<select id="view" parameterType="int" resultType="com.board.domain.BoardVO">
+		select
+			bno, title, content, regDate, viewCnt
+		from 
+			tbl_board
+			where
+				bno = #{bno}
+	</select>
+	
+	
 </mapper>
