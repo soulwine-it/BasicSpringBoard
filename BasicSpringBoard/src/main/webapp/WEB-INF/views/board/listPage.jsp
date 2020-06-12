@@ -38,6 +38,7 @@
 	</tbody>
 </table>
 <div>
+
 <c:if test="${page.prev }">
 	<span>[ <a href="/board/listPage?num=${page.startPageNum - 1 }">이전</a>]</span>
 </c:if>

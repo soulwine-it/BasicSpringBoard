@@ -65,18 +65,32 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	// 게시물 목록 + 페이징
-	// 매개변수인 displayPost, postNum을 해시맵을 이용하여 하나로 그룹지어주고 매퍼로 전송합니다.
-	@Override
-	public List listPage(int displayPost, int postNum) throws Exception {
+		@Override
+		public List<BoardVO> listPage(int displayPost, int postNum) throws Exception {
 
-	 HashMap data = new HashMap();
-	  
-	 data.put("displayPost", displayPost);
-	 data.put("postNum", postNum);
-	  
-	 return sql.selectList(namespace + ".listPage", data);
-	}
-	
+			HashMap<String, Integer> data = new HashMap<String, Integer>();
+			
+			data.put("displayPost", displayPost);
+			data.put("postNum", postNum);
+			
+			return sql.selectList(namespace + ".listPage", data);
+		}
+
+		// 게시물 목록 + 페이징 + 검색
+		@Override
+		public List<BoardVO> listPageSearch(
+				int displayPost, int postNum, String searchType, String keyword) throws Exception {
+
+			HashMap<String, Object> data = new HashMap<String, Object>();
+			
+			data.put("displayPost", displayPost);
+			data.put("postNum", postNum);
+			
+			data.put("searchType", searchType);
+			data.put("keyword", keyword);
+			
+			return sql.selectList(namespace + ".listPageSearch", data);
+		}
 	
 	
 
