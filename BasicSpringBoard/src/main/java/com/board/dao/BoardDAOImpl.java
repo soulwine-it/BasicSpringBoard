@@ -1,5 +1,6 @@
 package com.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -49,11 +50,31 @@ public class BoardDAOImpl implements BoardDAO {
 		sql.update(namespace + ".modify", vo);
 		
 	}
-
+	//게시물 삭제
 	@Override
 	public void delete(int bno) throws Exception {
 		sql.delete(namespace + ".delete", bno);
 		
+	}
+	
+	//게시물 총 개수
+	@Override
+	public int count() throws Exception {
+		return sql.selectOne(namespace + ".count");
+		
+	}
+
+	// 게시물 목록 + 페이징
+	// 매개변수인 displayPost, postNum을 해시맵을 이용하여 하나로 그룹지어주고 매퍼로 전송합니다.
+	@Override
+	public List listPage(int displayPost, int postNum) throws Exception {
+
+	 HashMap data = new HashMap();
+	  
+	 data.put("displayPost", displayPost);
+	 data.put("postNum", postNum);
+	  
+	 return sql.selectList(namespace + ".listPage", data);
 	}
 	
 	
